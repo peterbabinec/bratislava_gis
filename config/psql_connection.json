@@ -1,0 +1,6 @@
+{
+  "name": "bratislava_gis",
+  "user": "postgres",
+  "pass": "postgres",
+  "host": "localhost"
+}
