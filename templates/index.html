@@ -4,7 +4,7 @@
 
 <head>
     <meta charset=utf-8/>
-    <title>SportSearch</title>
+    <title>Sporter</title>
     <meta name='viewport'
           content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -23,6 +23,7 @@
           rel='stylesheet'/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='main.css') }}">
+
 </head>
 
 
@@ -33,12 +34,52 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="/" class="simple-text">
-                    Sport Search
+                    SPORTER
                 </a>
             </div>
-            <ul class="nav">
-                <button id="my_id" onclick="searchGym()" type="button" class="btn btn-default">Search Gyms</button>
-            </ul>
+            <form>
+                <h4 class="great">Gyms nearby</h4>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-map-marker fa-2x"></i></span>
+                    <input id="streetName" type="text" class="form-control" name="streetName" placeholder="Street name">
+                    <input id="streetNumber" type="text" class="form-control" name="streetNumber" placeholder="Street number">
+                </div>
+                <div id="slidecontainer">
+                    <h5 class="great">Distance: <span id="demo"></span><span> m</span></h5>
+                    <input id="distance" type="range" min="0" max="20000" value="2000" step="100" class="slider">
+                    <script>initSliderRange()</script>
+                </div>
+                <ul class="nav">
+                    <button id="search" onclick="renderGymPoints()" type="button" class="btn btn-default btn-search">Search</button>
+                </ul>
+            </form>
+            <form>
+                <h4 class="great">Pitch by sport type</h4>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-object-ungroup fa-lg"></i></span>
+                    <div id="dropdownSportList" class="dropdown">
+                        <button id="dropdownButton" class="btn btn-default dropdown-toggle btn-dropdown" type="button" data-toggle="dropdown">
+                            Choose your sport
+                            <div class="caret-container"><span class="fa fa-chevron-down" aria-hidden="true"></span></div></button>
+                        <script>loadPitchSportList()</script>
+                    </div>
+                </div>
+                <ul class="nav">
+                    <button id="display" onclick="renderPitchPolygons()" type="button" class="btn btn-default btn-search">
+                        Display
+                    </button>
+                </ul>
+            </form>
+            <form class="lastForm">
+                <h4 class="great">Where to run?</h4>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-road fa-lg"></i></span>
+                    <input id="cityArea" type="text" class="form-control" name="cityAreaName"
+                           placeholder="City area name">
+                </div>
+                <button id="analyse" onclick="renderCityAreaRunningShapes()" type="button" class="btn btn-default btn-search">Analyse
+                </button>
+            </form>
         </div>
     </div>
 
@@ -53,7 +94,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -90,4 +131,5 @@
     </div>
 </div>
 </body>
+
 </html>
