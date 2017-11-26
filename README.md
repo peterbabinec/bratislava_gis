@@ -13,6 +13,6 @@ Funkcionalita je rozdelená na 3 komplexné scenáre:
 
 **Data source:** `openstreetmap`
 
-**Technologies used:** `python`, `flask`, `javascript`, `mapbox`,
+**Technologies used:** `python (miniconda)`, `flask`, `javascript`, `mapbox`,
 `psql`, `postgis`, `Google Maps geocoding`
 
