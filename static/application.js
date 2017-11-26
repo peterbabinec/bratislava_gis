@@ -1,5 +1,4 @@
-var lat, lon;
-var gymLayerGroup = L.layerGroup();
+var mapLayerGroup = L.layerGroup();
 var sportList = [];
 const url = '/api/v1.0/';
 
@@ -13,9 +12,9 @@ function loadGymPoints(streetName, streetNumber, dist) {
     if (request.status >= 200 && request.status < 400) {
       var gymData = JSON.parse(request.responseText);
       gymData['type'] = 'FeatureCollection';
-      var mapLayer = L.mapbox.featureLayer(gymData);
-      gymLayerGroup.clearLayers();
-      gymLayerGroup.addLayer(mapLayer);
+      var gymLayer = L.mapbox.featureLayer(gymData);
+      mapLayerGroup.clearLayers();
+      mapLayerGroup.addLayer(gymLayer);
     } else {
       alert("Load Error");
     }
@@ -32,7 +31,7 @@ function renderGymPoints() {
   var streetName = document.getElementById("streetName").value;
   var dist = document.getElementById("distance").value;
   loadGymPoints(streetName, streetNumber, dist);
-  gymLayerGroup.addTo(map);
+  mapLayerGroup.addTo(map);
 }
 
 
@@ -66,8 +65,8 @@ function loadPitchPolygons(sportType){
       var pitchData = JSON.parse(request.responseText);
       pitchData['type'] = 'FeatureCollection';
       var pitchLayer = L.mapbox.featureLayer(pitchData);
-      gymLayerGroup.clearLayers();
-      gymLayerGroup.addLayer(pitchLayer);
+      mapLayerGroup.clearLayers();
+      mapLayerGroup.addLayer(pitchLayer);
     } else {
       alert("Load Error");
     }
@@ -83,7 +82,7 @@ function renderPitchPolygons(){
   var dropDownBtn = document.getElementById("dropdownButton");
   var dropDownBtnTxt = dropDownBtn.childNodes[0];
   loadPitchPolygons(dropDownBtnTxt.nodeValue);
-  gymLayerGroup.addTo(map);
+  mapLayerGroup.addTo(map);
 }
 
 
@@ -97,8 +96,8 @@ function loadCityAreaRunningShapes(areaName){
       var cityAreaData = JSON.parse(request.responseText);
       cityAreaData['type'] = 'FeatureCollection';
       var cityAreaLayer = L.mapbox.featureLayer(cityAreaData);
-      gymLayerGroup.clearLayers();
-      gymLayerGroup.addLayer(cityAreaLayer);
+      mapLayerGroup.clearLayers();
+      mapLayerGroup.addLayer(cityAreaLayer);
     } else {
       alert("Load Error");
     }
@@ -113,7 +112,7 @@ function loadCityAreaRunningShapes(areaName){
 function renderCityAreaRunningShapes() {
   var areaName = document.getElementById('cityArea').value;
   loadCityAreaRunningShapes(areaName);
-  gymLayerGroup.addTo(map);
+  mapLayerGroup.addTo(map);
 }
 
 

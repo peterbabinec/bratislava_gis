@@ -1,9 +1,8 @@
+from contextlib import contextmanager
+
+import json
 import psycopg2
 import psycopg2.extras
-
-import os
-import json
-from contextlib import contextmanager
 
 
 class DatabasePort:
@@ -56,7 +55,3 @@ class DatabasePort:
                 connection.rollback()
         finally:
             connection.close()
-
-
-
-
