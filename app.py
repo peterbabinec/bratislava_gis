@@ -63,7 +63,7 @@ def get_city_area_geodata(areaName):
                                cursor_factory=DictCursor) as cursor:
         query = "SELECT json_build_object(" \
                 "'type', 'Feature'," \
-                "'geometry', ST_AsGeoJSON(ST_Transform(way, 4326))::JSON," \
+                "'geometry', ST_AsGeoJSON(ST_Transform(way, 4326))::json," \
                 "'properties', json_build_object(" \
                 "   'title', name," \
                 "   'fill', '#003b84'," \
@@ -94,7 +94,7 @@ def get_running_geodata(areaName):
                 "   ) " \
                 "SELECT json_build_object(" \
                 "'type', 'Feature'," \
-                "'geometry', ST_AsGeoJSON(line_way)::JSON," \
+                "'geometry', ST_AsGeoJSON(line_way)::json," \
                 "'properties', json_build_object(" \
                 "   'title', highway," \
                 "   'description', round(ST_Length(line_way::GEOGRAPHY)) || 'm'," \
@@ -114,7 +114,7 @@ def get_pitch_geodata(sport_type):
                                cursor_factory=DictCursor) as cursor:
         query = "SELECT json_build_object(" \
                 "'type', 'Feature'," \
-                "'geometry', ST_AsGeoJSON(ST_Transform(way, 4326))::JSON," \
+                "'geometry', ST_AsGeoJSON(ST_Transform(way, 4326))::json," \
                 "'properties', json_build_object(" \
                 "   'title', sport," \
                 "   'description', round(ST_Area(ST_Transform(way, 4326)::GEOGRAPHY)) || ' m2'," \
@@ -149,7 +149,7 @@ def get_gym_geodata(dist, search_location):
                                cursor_factory=DictCursor) as cursor:
         query = "SELECT json_build_object(" \
                 "'type', 'Feature'," \
-                "'geometry', ST_AsGeoJSON(sub.geog_way)::JSON," \
+                "'geometry', ST_AsGeoJSON(sub.geog_way)::json," \
                 "'properties', json_build_object(" \
                 "   'title', sub.name," \
                 "   'description', coalesce(sub.leisure, sub.amenity)," \

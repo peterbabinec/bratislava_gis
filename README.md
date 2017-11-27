@@ -4,6 +4,8 @@ Fill in (either in English, or in Slovak):
 
 **Application description:**
 Projekt bol implementovaný ako webová aplikácia, zameraná na doménu športu.
+Aplikácia pomáha športovcom lokalizovať objekty ich záujmu a preferencií v meste Bratislava.
+
 Funkcionalita je rozdelená na 3 komplexné scenáre:
 * vyhľadávanie fitness centier a posilňovní do určitej vzdialenosti
 * vyhľadávanie športovísk podľa typu
